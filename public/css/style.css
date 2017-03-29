@@ -1,0 +1,51 @@
+.center-div
+{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.field {
+  position: relative;
+  margin-bottom: 2em;
+}
+.label {
+  position: absolute;
+  height: 2rem;
+  line-height: 2rem;
+  bottom: 0;
+  color: #000000!important;
+  font-family: 'Ubuntu', Arial, sans-serif ! important;
+  transition: all .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  font-size: 1.2rem!important;
+}
+.input {
+  width: 20rem;
+  font-size: 100%;
+  border: 0;
+  padding: 0;
+  background-color: transparent;
+  height: 2rem;
+  line-height: 2rem;
+  border-bottom: 1px solid #eee;
+  color: #00679e;
+  font-size: 1.2rem!important;
+  font-family: 'Ubuntu', Arial, sans-serif ! important;
+  transition: all .2s ease-in;
+}
+.input:focus {
+  outline: 0;
+  border-color: #ccc;
+}
+.input:focus + .label,
+input:valid + .label {
+  transform: translateY(-100%);
+  font-size: 0.75rem;
+  color: #000000;
+}
+
+.teacherCheckBox {
+   margin-bottom: 15px;
+}
