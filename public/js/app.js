@@ -1,35 +1,43 @@
 angular.module('myApp', ['ngRoute', 'ngResource'])
 
-.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
+.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
 
-	$routeProvider
+    $routeProvider
 
-		// home page
-		.when('/', {
-			templateUrl: 'views/main.html',
-			controller: 'MainController'
-		})
+    // home page
+        .when('/', {
+            templateUrl: 'views/Login.html',
+            controller: 'LoginController'
+        })
 
-		.when('/board', {
-			templateUrl: 'views/board.html',
-			controller: 'BoardController'
-		})
+        .when('/Main', {
+            templateUrl: 'views/Main.html',
+            controller: 'MainController'
+        })
 
-		.when('/nerds', {
-			templateUrl: 'views/nerd.html',
-			controller: 'UserController'
-		})
-		.when('/grid', {
-			templateUrl: 'views/grid.html',
-			controller: 'UserController'
-		})
-		.when('/geeks', {
-			templateUrl: 'views/geek.html',
-			controller: 'GeekController'
-		});
+        .when('/UserInfo', {
+                templateUrl: 'views/UserInfo.html',
+                controller: 'UserInfoController'
+        })
+        .when('/HomeWork', {
+            templateUrl: 'views/HomeWork.html',
+            controller: 'HomeWorkController'
+        })
+        .when('/ToDoList', {
+            templateUrl: 'views/ToDoList.html',
+            controller: 'ToDoListController'
+        })
+        .when('/WishList', {
+            templateUrl: 'views/WishList.html',
+            controller: 'WishListController'
+        })
+        .when('/MessageBoard', {
+            templateUrl: 'views/MessageBoard.html',
+            controller: 'MessageBoardController'
+        });
 
 
 
-	$locationProvider.html5Mode(true);
+    $locationProvider.html5Mode(true);
 
 }]);
