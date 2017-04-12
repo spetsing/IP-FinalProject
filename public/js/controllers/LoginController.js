@@ -1,6 +1,7 @@
 var module = angular.module('myApp');
 
-function LoginController($scope, Services) {
+function LoginController($scope, Services, $location) {
+    $scope.location = $location;
     /*
         Login: Make rest call to server. Verfiy username and password. If valid, route to main page and save user info in model
     */
@@ -9,8 +10,10 @@ function LoginController($scope, Services) {
         //save user info to global model
 
         //route to main page
+        $("#navBar").show();
+        this.location.path("/Main");
+        //this.$apply();
     }
-
     /*
         Sign Up New User: Hide loginDiv and show signUpDiv
     */
@@ -57,7 +60,7 @@ function LoginController($scope, Services) {
         }
     }
 
-    /*
+    /**
         Runs when html is rendered. Hide nav bar and signUpDiv
     */
     $(document).ready(function () {
@@ -72,7 +75,8 @@ function LoginController($scope, Services) {
 
 LoginController.$inject = [
         '$scope',
-        'Services'
+        'Services',
+        '$location'
     ];
 
 module.controller('LoginController', LoginController);
