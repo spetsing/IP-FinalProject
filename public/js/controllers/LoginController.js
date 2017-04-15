@@ -9,9 +9,26 @@ function LoginController($scope, Services, $location) {
         console.log("LOGGIN");
         //save user info to global model
 
-        //route to main page
-        $("#navBar").show();
-        this.location.path("/Main");
+        //Makse server call to check credentials
+        var userName = document.getElementById("fieldUser").value;
+        var password = document.getElementById("fieldPassword").value;
+
+        $.ajax({
+                type: 'GET',
+                url: 'http://34.195.93.38:3001/login?userName=' + userName +'&password='+ password,
+                success: function (data) {
+                    //route to main page
+                    $("#navBar").show();
+                    this.location.path("/Main");
+                    this.$apply();
+                    //save data to model
+                }.bind(this),
+                error: function (err) {
+                    alert(err.responseJSON);
+                }.bind(this)
+            });
+
+
         //this.$apply();
     }
     /*
@@ -21,7 +38,7 @@ function LoginController($scope, Services, $location) {
         console.log("SIGNUP");
         $("#loginDiv").hide();
         $("#signUpDiv").show();
-        $("#classIdDiv").hide();
+        $("#classNameDiv").hide();
     }
 
     /*
@@ -33,11 +50,27 @@ function LoginController($scope, Services, $location) {
             lastName: document.getElementById("register_lastName").value,
             userName: document.getElementById("register_username").value,
             password: document.getElementById("register_password").value,
-            classID:  document.getElementById("register_classID").value
+            teacher: document.getElementById("teacherCheckBox").checked,
+            class:{
+                id: document.getElementById("register_classID").value,
+                name: document.getElementById("register_className").value
+            }
         }
         console.log(user);
-    }
 
+        //Makse server call to register user
+        $.ajax({
+                type: 'POST',
+                url: 'http://34.195.93.38:3001/registerUser',
+                data: user,
+                success: function (data) {
+
+                }.bind(this),
+                error: function (err) {
+
+                }.bind(this)
+            });
+    }
     /*
         Cancel Sign Up: Clear Fields, Hide signUpDiv and show loginDiv
     */
@@ -54,9 +87,9 @@ function LoginController($scope, Services, $location) {
     $scope.selectTeacher = function($event) {
         var checkBox = document.getElementById("teacherCheckBox");
         if(checkBox.checked === true) {
-            $("#classIdDiv").show();
+            $("#classNameDiv").show();
         } else {
-            $("#classIdDiv").hide();
+            $("#classNameDiv").hide();
         }
     }
 

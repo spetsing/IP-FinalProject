@@ -35,8 +35,12 @@
             <input type="checkbox" id="teacherCheckBox" ng-click="selectTeacher($event)" value="first_checkbox">
             <label for="cbox1">Teacher</label>
         </div>
+         <div class="field" id="classNameDiv" >
+            <input tabText="1" type="text" id="register_className" class="input" required pattern=.*\S.*>
+            <label for="fieldPassword" class="label">Class Name</label>
+        </div>
         <div class="field" id="classIdDiv" >
-            <input tabText="1" type="text" id="register_classID" class="input" required pattern=.*\S.* / submit="onPressSubmit">
+            <input tabText="1" type="text" id="register_classID" class="input" required pattern=.*\S.*>
             <label for="fieldPassword" class="label">Class ID</label>
         </div>
         <div>
