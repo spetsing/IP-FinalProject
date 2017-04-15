@@ -11,16 +11,25 @@ var userSchema = new Schema({
         id: String,
         name: String
     }
-})
+},{collection:"users"})
 var user = mongoose.model("User", userSchema);
 
+var classSchema = new Schema({
+    id: String,
+    teacher: String,
+    homeWork:[],
+    toDo:[],
+    wishList:[],
+    messageBoard:[]
+},{collection:"classRooms"})
+var classRoom = mongoose.model("ClassRoom", classSchema);
 
 
 
 
 
 
-
-model.exports = {
-    user: user
+module.exports = {
+    user: user,
+    class: classRoom
 }
