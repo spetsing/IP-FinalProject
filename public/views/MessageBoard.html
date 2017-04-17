@@ -1,14 +1,16 @@
 <body>
-<div id="current_user">
-</div>
-<div id="create_message">
-    <div>
-        <select id="recipients">
-            <option value="">To...</option>
-        </select>
-        <input type="text" id="message" placeholder="Message text..." size="50"/>
-        <div id="send" onClick="sendMessage()">Send</div>
-    </div>
-</div>
-<div id="message_display"></div>
-</body>
+        <div class="container" id="homework-section">
+            <div class="panel panel-primary">
+                <div class="panel-heading">Send Message</div>
+                <div class="panel-body">
+                    <form id="message-form">
+                        <div class="form-group">
+                            <label for="messageInputDescription">Message</label>
+                            <textarea class="form-control" rows="5" id="messageInputDescription"></textarea>
+                        </div>
+                        <button type="submit" ng-click="addMessage()" class="btn btn-primary" id="messageSubmitButton">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>

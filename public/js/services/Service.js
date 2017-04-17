@@ -19,6 +19,13 @@
             },
             setClass: function(classInfo) {
                 data.classInfo = classInfo;
+            },
+            isTeacher: function() {
+                if(data.userInfo.teacher) {
+                    return true;
+                } else {
+                    return false;
+                }
             }
 
         }

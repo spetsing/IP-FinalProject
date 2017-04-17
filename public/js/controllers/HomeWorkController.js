@@ -3,7 +3,16 @@ var module = angular.module('myApp');
 function HomeWorkController($scope, Services) {
     $scope.services = Services;
     $scope.homework;
-    $scope.classID = Services.getUserInfo().class.id
+    $scope.classID = Services.getUserInfo().class.id;
+    var isTeacher = Services.isTeacher();
+
+    //Check if teacher. If Not, hide ability to add Homework
+    $(document).ready(function () {
+
+        if(this.services.isTeacher()){
+            debugger;
+           }
+    }.bind($scope));
 
     $.ajax({
                 type: 'GET',
