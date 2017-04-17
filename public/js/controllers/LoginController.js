@@ -2,6 +2,7 @@ var module = angular.module('myApp');
 
 function LoginController($scope, Services, $location) {
     $scope.location = $location;
+    $scope.services = Services;
     /*
         Login: Make rest call to server. Verfiy username and password. If valid, route to main page and save user info in model
     */
@@ -17,6 +18,7 @@ function LoginController($scope, Services, $location) {
                 type: 'GET',
                 url: 'http://34.195.93.38:3001/login?userName=' + userName +'&password='+ password,
                 success: function (data) {
+                    this.services.setUser(data);
                     //route to main page
                     $("#navBar").show();
                     this.location.path("/Main");
@@ -100,9 +102,6 @@ function LoginController($scope, Services, $location) {
         $("#navBar").hide();
         $("#signUpDiv").hide();
     });
-
-
-
 }
 
 

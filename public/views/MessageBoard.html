@@ -1,1 +1,14 @@
-<h2>Message Board</h2>
+<body>
+<div id="current_user">
+</div>
+<div id="create_message">
+    <div>
+        <select id="recipients">
+            <option value="">To...</option>
+        </select>
+        <input type="text" id="message" placeholder="Message text..." size="50"/>
+        <div id="send" onClick="sendMessage()">Send</div>
+    </div>
+</div>
+<div id="message_display"></div>
+</body>

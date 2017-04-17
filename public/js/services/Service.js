@@ -3,17 +3,22 @@
    module.factory('Services', function(){
 
         var data = {
-            userName:"Steven",
-            board:"Board1"
+            userInfo:"",
+            classInfo:""
         }
 
         return {
-            getData: function() {
-                return data;
+            getUserInfo: function() {
+                return data.userInfo;
             },
-            setData: function(userName,board) {
-                data.userName = userName;
-                data.board = board;
+            getClassInfo: function() {
+                return data.classInfo;
+            },
+            setUser: function(userInfo) {
+                data.userInfo = userInfo;
+            },
+            setClass: function(classInfo) {
+                data.classInfo = classInfo;
             }
 
         }
