@@ -3,7 +3,7 @@ var module = angular.module('myApp');
 function MessageBoardController($scope, Services) {
     console.log("message");
     $scope.services = Services;
-    $scope.homework;
+    $scope.messageBoard = [];
     $scope.classID = Services.getUserInfo().class.id;
     var isTeacher = Services.isTeacher();
 
@@ -18,9 +18,9 @@ function MessageBoardController($scope, Services) {
                 type: 'GET',
                 url: 'http://34.195.93.38:3001/getMessageBoard?id='+$scope.classID,
                 success: function (data) {
-                   this.homework = data;
-                    $scope.addMessageBoardToView(data);
-                }.bind(this),
+                    this.messageBoard = data;
+                    this.$digest();
+                }.bind($scope),
                 error: function (err) {
                     alert(err.responseJSON);
                 }.bind(this)
@@ -47,7 +47,9 @@ function MessageBoardController($scope, Services) {
                 url: 'http://34.195.93.38:3001/addMessage',
                 data: message,
                 success: function (data) {
-                   this.addMessageToView(message);
+                    this.messageBoard.push(message);
+                    this.$digest();
+                    $("#messageInputDescription").val("");
                 }.bind(this),
                 error: function (err) {
                     alert(err.responseJSON);
@@ -55,52 +57,6 @@ function MessageBoardController($scope, Services) {
             });
     }
 
-
-
-
-    $scope.addMessageBoardToView = function(message) {
-        for(var x = 0; x< message.length; x++) {
-             var panel = document.createElement('div');
-        panel.className = 'panel panel-info';
-        document.getElementById('homework-section').appendChild(panel);
-
-        var heading = document.createElement('div');
-        heading.className = 'panel-heading';
-        heading.innerHTML = message[x].userName;
-        panel.appendChild(heading);
-
-        var body = document.createElement('div');
-        body.className = 'panel-body';
-        body.innerHTML = message[x].description;
-        panel.appendChild(body);
-
-        var footer = document.createElement('div');
-        footer.className = 'panel-footer';
-        footer.innerHTML = message[x].date;
-        panel.appendChild(footer);
-        }
-
-
-    }
-
-     $scope.addMessageToView = function (message) {
-
-        var panel = document.createElement('div');
-        panel.className = 'panel panel-info';
-        document.getElementById('homework-section').appendChild(panel);
-
-        var heading = document.createElement('div');
-        heading.className = 'panel-heading';
-        heading.innerHTML =  message.userName;
-        panel.appendChild(heading);
-
-        var body = document.createElement('div');
-        body.className = 'panel-body';
-        body.innerHTML = message.date + "\n" +message.description;
-        panel.appendChild(body);
-
-        $("#messageInputDescription").val("");
-    }
 
 
 

@@ -1,22 +1,28 @@
 <body>
-        <div class="container" id="homework-section">
-            <div class="panel panel-primary">
-                <div class="panel-heading">Assign Homework</div>
-                <div class="panel-body">
-                    <form id="homework-form">
-                        <div class="row">
-                            <div class="form-group col-md-2">
-                                <label for="hwInputDate">Due Date</label>
-                                <input type="date" class="form-control" id="hwInputDate">
-                            </div>
+    <div class="container" id="homework-section">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Assign Homework</div>
+            <div class="panel-body">
+                <form id="homework-form">
+                    <div class="row">
+                        <div class="form-group col-md-2">
+                            <label for="hwInputDate">Due Date</label>
+                            <input type="date" class="form-control" id="hwInputDate">
                         </div>
-                        <div class="form-group">
-                            <label for="hwInputDescription">Description</label>
-                            <textarea class="form-control" rows="5" id="hwInputDescription"></textarea>
-                        </div>
-                        <button type="submit" ng-click="addHomework()" class="btn btn-primary" id="hwSubmitButton">Submit</button>
-                    </form>
-                </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="hwInputDescription">Description</label>
+                        <textarea class="form-control" rows="5" id="hwInputDescription"></textarea>
+                    </div>
+                    <button type="submit" ng-click="addHomework()" class="btn btn-primary" id="hwSubmitButton">Submit</button>
+                </form>
             </div>
         </div>
-    </body>
+        <div class="container" ng-repeat="x in homework">
+            <div class="panel panel-info">
+                <div class="panel-heading">Due on {{x.date}}</div>
+                <div class="panel-body">{{x.description}}</div>
+            </div>
+        </div>
+    </div>
+</body>

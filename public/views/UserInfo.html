@@ -1,1 +1,17 @@
 <h2>User Info</h2>
+
+<table  border="1">
+    <tr ng-repeat="x in test">
+        <td>{{x.name}}</td>
+        <td>{{x.age}}</td>
+    </tr>
+</table>
+
+
+<div ng-repeat="y in test">
+    <h1 id="{{y.id}}">{{y.name}}</h1>
+    <h2>{{y.age}}</h2>
+
+</div>
+
+<button ng-click="testing()">Add Data</button>

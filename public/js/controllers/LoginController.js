@@ -66,10 +66,10 @@ function LoginController($scope, Services, $location) {
                 url: 'http://34.195.93.38:3001/registerUser',
                 data: user,
                 success: function (data) {
-
+                    this.cancel();
                 }.bind(this),
                 error: function (err) {
-
+                    alert(err.responseText);
                 }.bind(this)
             });
     }
@@ -77,11 +77,12 @@ function LoginController($scope, Services, $location) {
         Cancel Sign Up: Clear Fields, Hide signUpDiv and show loginDiv
     */
     $scope.cancel = function() {
-        document.getElementById("register_firstName").value = ""
-        document.getElementById("register_lastName").value = ""
-        document.getElementById("register_username").value = ""
-        document.getElementById("register_password").value = ""
-        document.getElementById("register_classID").value = ""
+        document.getElementById("register_firstName").value = "";
+        document.getElementById("register_lastName").value = "";
+        document.getElementById("register_username").value = "";
+        document.getElementById("register_password").value = "";
+        document.getElementById("register_classID").value = "";
+        document.getElementById("teacherCheckBox").checked = false;
         $("#loginDiv").show();
         $("#signUpDiv").hide();
     }
