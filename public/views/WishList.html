@@ -10,8 +10,15 @@
                 <div class="sign up">
                     <button type="submit" class="signupbtn" id="WishListSubmitButton">Sign Up</button>
                 </div>
-
             </form>
         </div>
     </div>
+    <ul class="todo-list" ng-repeat="x in wishList">
+			<li class="done">
+				<label class="toggle" for="find" style="margin-right:50px">{{x.description}}</label>
+                <input id="{{x.id}}" type="checkbox" ng-click="checkItem($event)" ng-show="test(x)" />
+                <label ng-show="!test(x)">{{x.parentAssigned}}</label>
+			</li>
+    </ul>
+    <button>Mark Complete</button>
 </div>
