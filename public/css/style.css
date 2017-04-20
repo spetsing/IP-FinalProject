@@ -68,7 +68,7 @@ input:valid + .label {
     position: relative;
     padding: 7px 15px 7px 50px;
     line-height: 21px;
-    font-size: 12px;
+    font-size: 18px;
     color: #8b8f97;
     border-bottom: 1px solid #e6ebed;
 }

@@ -4,21 +4,35 @@
         <div class="panel-body">
             <form id="WishList-form">
                 <div class="form-group">
-                    <label for="WishListInputDescription">Message</label>
+                    <label for="WishListInputDescription">Wish List Item</label>
                     <textarea class="form-control" rows="5" id="WishListInputDescription"></textarea>
                 </div>
                 <div class="sign up">
-                    <button type="submit" class="signupbtn" id="WishListSubmitButton">Sign Up</button>
+                    <button type="submit" class="btn btn-primary" id="WishListSubmitButton">Add To Wish List</button>
                 </div>
             </form>
         </div>
     </div>
-    <ul class="todo-list" ng-repeat="x in wishList">
-			<li class="done">
-				<label class="toggle" for="find" style="margin-right:50px">{{x.description}}</label>
-                <input id="{{x.id}}" type="checkbox" ng-click="checkItem($event)" ng-show="test(x)" />
-                <label ng-show="!test(x)">{{x.parentAssigned}}</label>
-			</li>
-    </ul>
-    <button>Mark Complete</button>
+    <div class="container">
+  <h2>Wish List</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Wish List Item</th>
+        <th>Parent Responsible / Sign Up</th>
+      </tr>
+    </thead>
+    <tbody >
+      <tr ng-repeat="x in wishList">
+        <td>{{x.description}}</td>
+        <td>
+            <button id="{{x.id}}"  ng-click="checkItem($event)" ng-show="test(x)" class="btn btn-primary" >Sign Up</button>
+            <label ng-show="!test(x)">{{x.parentAssigned}}</label>
+        </td>
+
+      </tr>
+
+    </tbody>
+  </table>
+</div>
 </div>
