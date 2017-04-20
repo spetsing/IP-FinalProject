@@ -8,7 +8,7 @@
                     <textarea class="form-control" rows="5" id="WishListInputDescription"></textarea>
                 </div>
                 <div class="sign up">
-                    <button type="submit" class="btn btn-primary" id="WishListSubmitButton">Add To Wish List</button>
+                    <button type="submit" class="btn btn-primary" ng-click="addToWishList()" id="WishListSubmitButton">Add To Wish List</button>
                 </div>
             </form>
         </div>
@@ -26,7 +26,7 @@
       <tr ng-repeat="x in wishList">
         <td>{{x.description}}</td>
         <td>
-            <button id="{{x.id}}"  ng-click="checkItem($event)" ng-show="test(x)" class="btn btn-primary" >Sign Up</button>
+            <button id="{{x.id}}"  ng-click="signUp($event)" ng-show="test(x)" class="btn btn-primary" >Sign Up</button>
             <label ng-show="!test(x)">{{x.parentAssigned}}</label>
         </td>
 

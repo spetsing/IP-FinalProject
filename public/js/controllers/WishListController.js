@@ -30,16 +30,13 @@ function WishListController($scope, Services) {
     });
 
 
-    $scope.addToDo = function () {
+    $scope.addToWishList = function () {
 
-        var description = $("#ToDOInputDescription").val();
+        var description = $("#WishListInputDescription").val();
 
         var wishListItem = {
             classID: this.classID,
             id: new Date().toISOString(),
-            userName: this.services.getUserInfo().userName,
-            markedCompleted: [],
-            date: new Date().toDateString(),
             description: description,
             parentAssigned: "none"
         }
@@ -49,9 +46,9 @@ function WishListController($scope, Services) {
             url: 'http://34.195.93.38:3001/addWishList',
             data: wishListItem,
             success: function (data) {
-                this.wishLIst.push(wishListItem);
+                this.wishList.push(wishListItem);
                 this.$digest();
-                $("#messageInputDescription").val("");
+                $("#WishListInputDescription").val("");
             }.bind(this),
             error: function (err) {
                 alert(err.responseJSON);
@@ -65,6 +62,32 @@ function WishListController($scope, Services) {
         } else {
             return false;
         }
+    }
+
+    $scope.signUp = function($event) {
+
+        var signUp = {
+            id: event.target.id,
+            classID: this.classID,
+            userName: this.services.getUserInfo().firstName + " " + this.services.getUserInfo().lastName
+        }
+
+         $.ajax({
+            type: 'POST',
+            url: 'http://34.195.93.38:3001/singUpWishList',
+            data: signUp,
+            success: function (data) {
+               for(var x = 0; x < this.wishList.length; x++) {
+                    this.wishList[x].parentAssigned = data[x].parentAssigned;
+                }
+                this.$digest();
+                $("#WishListInputDescription").val("");
+            }.bind(this),
+            error: function (err) {
+                alert(err.responseJSON);
+            }.bind(this)
+        });
+
     }
 
 
