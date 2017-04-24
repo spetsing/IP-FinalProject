@@ -41,10 +41,13 @@
 </head>
 
 
-<body ng-app="myApp">
-
-    <nav class="navbar navbar-default">
+<body ng-app="myApp" >
+    <nav id="navBar" class="navbar navbar-default">
         <div id="topHeaderRow" class="container-fluid">
+            <div class="navbar-header">
+                    <!--<a class="navbar-brand" href="#"><b>School</b></a>-->
+                    <img src="img/Kennesaw_State_University.png" id="navbar-image">
+                </div>
             <ul class="nav navbar-nav">
                 <li><a href="/Main">Home</a></li>
                 <li><a href="/UserInfo">User Info</a></li>
@@ -53,12 +56,15 @@
                 <li><a href="/WishList">Wish List</a></li>
                 <li><a href="/MessageBoard">Message Board</a></li>
             </ul>
+            <ul class="nav navbar-nav navbar-right">
+                    <li><p class="navbar-text" id="navbar-username"></p></li>
+                </ul>
         </div>
     </nav>
 
     <div>
         <!-- WHERE ANGULAR VIEW IS INJECTED -->
-        <div ng-view></div>
+        <div ng-view ></div>
     </div>
 </body>
 

@@ -1,3 +1,4 @@
+
 1) Download Git https://git-scm.com/
     - When installing, select option to use both regular command line and git bash
 2) Download NPM (Node Package Manager) https://nodejs.org/en/

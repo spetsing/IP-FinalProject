@@ -1,1 +1,41 @@
-<h2>Wish List</h2>
+<div class="container" id="WishList-section">
+    <div id="input" class="panel panel-primary">
+        <div class="panel-heading">Wish List</div>
+        <div class="panel-body">
+            <form id="WishList-form">
+                <div class="form-group">
+                    <label for="WishListInputDescription">Wish List Item</label>
+                    <textarea class="form-control" rows="5" id="WishListInputDescription"></textarea>
+                </div>
+                <div class="sign up">
+                    <button type="submit" class="btn btn-primary" ng-click="addToWishList()" id="WishListSubmitButton">Add To Wish List</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="container">
+        <div class="panel panel-info">
+            <div class="panel-heading">To Do List</div>
+            <div class="panel-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Wish List Item</th>
+                            <th>Parent Responsible / Sign Up</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="x in wishList">
+                            <td>{{x.description}}</td>
+                            <td>
+                                <button id="{{x.id}}" ng-click="signUp($event)" ng-show="test(x)" class="btn btn-primary">Sign Up</button>
+                                <label ng-show="!test(x)">{{x.parentAssigned}}</label>
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>

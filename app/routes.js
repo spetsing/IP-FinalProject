@@ -98,4 +98,219 @@ module.exports = function (app) {
 
     })
 
+
+    app.post('/addHomework', function(req, res) {
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        var classRoom = mongooseModel.class;
+
+        var newHomework = {
+            date: req.body.date,
+            description: req.body.description
+        }
+
+        console.log(newHomework);
+
+        classRoom.find({id:req.body.id},function(err, documents) {
+            if(err) console.error(err);
+            if(documents.length > 0) {
+                documents[0].homeWork.push(newHomework);
+                documents[0].save();
+                console.log("New Homework Saved");
+                res.status(200).json(documents[0]);
+            } else {
+                res.status(400).json("I Cannot find a class with the ID provided");
+            }
+        })
+    })
+
+    app.get('/getHomework', function(req, res) {
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        var classRoom = mongooseModel.class;
+        var id = req.query['id'];
+
+        classRoom.find({id:id}, function(err, documents) {
+            if(err) console.error(err);
+            if(documents.length > 0) {
+                res.status(200).json(documents[0].homeWork);
+            } else {
+                res.status(400).json("Could not a find a class with the ID provided");
+            }
+        })
+    })
+
+    app.post('/addMessage', function(req, res) {
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        var classRoom = mongooseModel.class;
+
+        var newMessage = {
+            date: req.body.date,
+            description: req.body.description,
+            userName: req.body.userName
+        }
+
+        console.log(newMessage);
+
+        classRoom.find({id:req.body.id},function(err, documents) {
+            if(err) console.error(err);
+            if(documents.length > 0) {
+                documents[0].messageBoard.push(newMessage);
+                documents[0].save();
+                console.log("New Homework Saved");
+                res.status(200).json(documents[0]);
+            } else {
+                res.status(400).json("I Cannot find a class with the ID provided");
+            }
+        })
+    })
+
+
+    app.get('/getMessageBoard', function(req, res) {
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        var classRoom = mongooseModel.class;
+        var id = req.query['id'];
+
+        classRoom.find({id:id}, function(err, documents) {
+            if(err) console.error(err);
+            if(documents.length > 0) {
+                res.status(200).json(documents[0].messageBoard);
+            } else {
+                res.status(400).json("Could not a find a class with the ID provided");
+            }
+        })
+    })
+
+    app.post('/addToDo', function(req, res) {
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        var classRoom = mongooseModel.class;
+
+        var newToDo = {
+            id: req.body.id,
+            date: req.body.date,
+            description: req.body.description,
+            markedCompleted:[]
+        }
+
+        console.log(newToDo);
+
+        classRoom.find({id:req.body.classID},function(err, documents) {
+            if(err) console.error(err);
+            if(documents.length > 0) {
+                documents[0].toDo.push(newToDo);
+                documents[0].save();
+                console.log("New ToDo Saved");
+                res.status(200).json(documents[0]);
+            } else {
+                res.status(400).json("I Cannot find a class with the ID provided");
+            }
+        })
+    })
+
+
+    app.get('/getToDoList', function(req, res) {
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        var classRoom = mongooseModel.class;
+        var id = req.query['id'];
+
+        classRoom.find({id:id}, function(err, documents) {
+            if(err) console.error(err);
+            if(documents.length > 0) {
+                res.status(200).json(documents[0].toDo);
+            } else {
+                res.status(400).json("Could not a find a class with the ID provided");
+            }
+        })
+    })
+
+    app.post('/markCompletedToDo', function(req, res) {
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        var classRoom = mongooseModel.class;
+        var id = req.body.classID;
+        console.log(req.body);
+
+        classRoom.find({id:id},function(err, documents) {
+            if(err) console.error(err);
+            if(documents.length > 0) {
+                for(var x = 0; x < documents[0].toDo.length;x++) {
+                    console.log(documents[0].toDo[x].id + "     " + req.body.id);
+                    if(documents[0].toDo[x].id === req.body.id) {
+                        documents[0].toDo[x].markedCompleted.push(req.body.userName);
+                        console.log(documents[0].toDo[x].markedCompleted);
+                    }
+                }
+                documents[0].markModified('toDo');
+                documents[0].save();
+                res.status(200).json("Added user to completed");
+            } else {
+                res.status(400).json("Could not find a class with that ID");
+            }
+        })
+    })
+
+
+     app.post('/addWishList', function(req, res) {
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        var classRoom = mongooseModel.class;
+
+        var newWishListItem = {
+            id: req.body.id,
+            description: req.body.description,
+            parentAssigned:"none"
+        }
+
+        console.log(newWishListItem);
+
+        classRoom.find({id:req.body.classID},function(err, documents) {
+            if(err) console.error(err);
+            if(documents.length > 0) {
+                documents[0].wishList.push(newWishListItem);
+                documents[0].save();
+                console.log("WishList Saved");
+                res.status(200).json(documents[0]);
+            } else {
+                res.status(400).json("I Cannot find a class with the ID provided");
+            }
+        })
+    })
+
+
+    app.get('/getWishList', function(req, res) {
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        var classRoom = mongooseModel.class;
+        var id = req.query['id'];
+
+        classRoom.find({id:id}, function(err, documents) {
+            if(err) console.error(err);
+            if(documents.length > 0) {
+                res.status(200).json(documents[0].wishList);
+            } else {
+                res.status(400).json("Could not a find a class with the ID provided");
+            }
+        })
+    })
+
+    app.post('/singUpWishList', function(req, res) {
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        var classRoom = mongooseModel.class;
+        var id = req.body.classID;
+        console.log(req.body);
+
+        classRoom.find({id:id},function(err, documents) {
+            if(err) console.error(err);
+            if(documents.length > 0) {
+                for(var x = 0; x < documents[0].wishList.length;x++) {
+                    console.log(documents[0].wishList[x].id + "     " + req.body.id);
+                    if(documents[0].wishList[x].id === req.body.id) {
+                        documents[0].wishList[x].parentAssigned = req.body.userName;
+                        console.log(documents[0].toDo[x].markedCompleted);
+                    }
+                }
+                documents[0].markModified('wishList');
+                documents[0].save();
+                res.status(200).json(documents[0].wishList);
+            } else {
+                res.status(400).json("Could not find a class with that ID");
+            }
+        })
+    })
+
 };

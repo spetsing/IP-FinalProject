@@ -1,1 +1,51 @@
-<h2>Log In</h2>
+
+<div class="center-div" >
+    <div id="loginDiv">
+        <div class="field">
+            <input tabText="3" type="text" id="fieldUser" class="input" required pattern=.*\S.* />
+            <label for="fieldUser" class="label">Username</label>
+        </div>
+        <div class="field">
+            <input tabText="1" type="password" id="fieldPassword" class="input" required pattern=.*\S.* / submit="onPressSubmit">
+            <label for="fieldPassword" class="label">Password</label>
+        </div>
+        <div>
+            <button class="loginButton btn btn-primary" ng-click="login()">login</button>
+            <button class="loginButton btn btn-primary" ng-click="signUp()">sign up</button>
+        </div>
+    </div>
+    <div id="signUpDiv">
+        <div class="field">
+            <input tabText="3" type="text" id="register_firstName" class="input" required pattern=.*\S.* />
+            <label for="fieldUser" class="label">First Name</label>
+        </div>
+        <div class="field">
+            <input tabText="3" type="text" id="register_lastName" class="input" required pattern=.*\S.* />
+            <label for="fieldUser" class="label">Last Name</label>
+        </div>
+        <div class="field">
+            <input tabText="3" type="text" id="register_username" class="input" required pattern=.*\S.* />
+            <label for="fieldUser" class="label">Username</label>
+        </div>
+        <div class="field">
+            <input tabText="1" type="password" id="register_password" class="input" required pattern=.*\S.* / submit="onPressSubmit">
+            <label for="fieldPassword" class="label">Password</label>
+        </div>
+        <div class="teacherCheckBox">
+            <input type="checkbox" id="teacherCheckBox" ng-click="selectTeacher($event)" value="first_checkbox">
+            <label for="cbox1">Teacher</label>
+        </div>
+         <div class="field" id="classNameDiv" >
+            <input tabText="1" type="text" id="register_className" class="input" required pattern=.*\S.*>
+            <label for="fieldPassword" class="label">Class Name</label>
+        </div>
+        <div class="field" id="classIdDiv" >
+            <input tabText="1" type="text" id="register_classID" class="input" required pattern=.*\S.*>
+            <label for="fieldPassword" class="label">Class ID</label>
+        </div>
+        <div>
+            <button class="loginButton btn btn-primary" ng-click="register()">register</button>
+            <button class="loginButton btn btn-primary" ng-click="cancel()">cancel</button>
+        </div>
+    </div>
+</div>

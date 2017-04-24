@@ -1,0 +1,119 @@
+.center-div
+{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.field {
+  position: relative;
+  margin-bottom: 2em;
+}
+.label {
+  position: absolute;
+  height: 2rem;
+  line-height: 2rem;
+  bottom: 0;
+  color: #ffffff!important;
+  font-family: 'Ubuntu', Arial, sans-serif ! important;
+  transition: all .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  font-size: 2rem!important;
+}
+.input {
+  width: 20rem;
+  font-size: 100%;
+  border: 0;
+  padding: 0;
+  background-color: transparent;
+  height: 2rem;
+  line-height: 2rem;
+  border-bottom: 1px solid #eee;
+  color: #ffffff;
+  font-size: 1.7rem!important;
+  font-family: 'Ubuntu', Arial, sans-serif ! important;
+  transition: all .2s ease-in;
+}
+.input:focus {
+  outline: 0;
+  border-color: #ccc;
+}
+.input:focus + .label,
+input:valid + .label {
+  transform: translateY(-100%);
+  font-size: 0.75rem;
+  color: #000000;
+}
+
+.teacherCheckBox {
+   margin-bottom: 15px;
+}
+
+
+
+.todo-list li {
+    position: relative;
+    padding: 7px 15px 7px 50px;
+    line-height: 21px;
+    font-size: 18px;
+    color: #000000;
+    border-bottom: 1px solid #e6ebed;
+    font-size: 3rem;
+}
+
+.view {
+    background: url('../img/scrappy-campus.jpg');
+        background-repeat: no-repeat;
+}
+
+
+#navbar-image {
+    width: 120px;
+    padding-top: 10px;
+    padding-right: 10px;
+}
+
+.user-info-block {
+    padding-left: 10px;
+    padding-bottom: 14px;
+}
+
+.user-info-subtitle {
+    font-size: 16px;
+}
+
+#user-info-course-name {
+    font-style: italic;
+}
+
+.home-panel {
+    min-height: 300px;
+}
+
+.jumbotron {
+    padding-left: 70px;
+}
+
+body {
+    background-color: transparent!important;
+}
+
+
+html {
+  background: url("../img/scrappy-campus.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+th {
+
+    font-size: 3rem;
+}
+
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+
+
+}

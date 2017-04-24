@@ -1,1 +1,23 @@
-<h2>Message Board</h2>
+<body>
+        <div class="container" id="homework-section">
+            <div class="panel panel-primary">
+                <div class="panel-heading">Send Message</div>
+                <div class="panel-body">
+                    <form id="message-form">
+                        <div class="form-group">
+                            <label for="messageInputDescription">Message</label>
+                            <textarea class="form-control" rows="5" id="messageInputDescription"></textarea>
+                        </div>
+                        <button type="submit" ng-click="addMessage()" class="btn btn-primary" id="messageSubmitButton">Submit</button>
+                    </form>
+                </div>
+            </div>
+            <div class="container" ng-repeat="x in messageBoard">
+            <div class="panel panel-info">
+                <div class="panel-heading">{{x.userName}}</div>
+                <div class="panel-body">{{x.description}}</div>
+                <div class="panel-footer">{{x.date}}</div>
+            </div>
+        </div>
+        </div>
+    </body>

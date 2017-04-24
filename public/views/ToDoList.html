@@ -1,1 +1,25 @@
-<h2>To Do</h2>
+<div class="container" id="ToDo-section">
+    <div id="input" class="panel panel-primary">
+        <div class="panel-heading">To Do List</div>
+        <div class="panel-body">
+            <form id="ToDo-form">
+                <div class="form-group">
+                    <label for="ToDoInputDescription">Description</label>
+                    <textarea class="form-control" rows="5" id="ToDOInputDescription"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" ng-click="addToDo()" id="ToDoSubmitButton">Submit</button>
+            </form>
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">To Do List</div>
+        <div class="panel-body">
+            <div class="panel-body">
+                <ul class="todo-list" ng-repeat="x in toDoList">
+                    <li class="done">
+                        <input id="{{x.id}}" type="checkbox" ng-click="checkItem($event)" />
+                        <label class="toggle" for="find"></label> {{x.description}}
+                    </li>
+                </ul>
+            </div>
+        </div>
