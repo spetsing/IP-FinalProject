@@ -16,10 +16,10 @@
   height: 2rem;
   line-height: 2rem;
   bottom: 0;
-  color: #000000!important;
+  color: #ffffff!important;
   font-family: 'Ubuntu', Arial, sans-serif ! important;
   transition: all .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  font-size: 1.2rem!important;
+  font-size: 2rem!important;
 }
 .input {
   width: 20rem;
@@ -30,8 +30,8 @@
   height: 2rem;
   line-height: 2rem;
   border-bottom: 1px solid #eee;
-  color: #00679e;
-  font-size: 1.2rem!important;
+  color: #ffffff;
+  font-size: 1.7rem!important;
   font-family: 'Ubuntu', Arial, sans-serif ! important;
   transition: all .2s ease-in;
 }
@@ -50,25 +50,70 @@ input:valid + .label {
    margin-bottom: 15px;
 }
 
-.todo-list { border-top: 1px solid #e6ebed }
 
-.todo-list:before {
-    content: '';
-    width: 3px;
-    z-index: 2;
-    border: 1px solid #f2e3df;
-    border-width: 0 1px;
-    position: absolute;
-    top: 0px;
-    bottom: 0px;
-    left: 35px;
-}
 
 .todo-list li {
     position: relative;
     padding: 7px 15px 7px 50px;
     line-height: 21px;
     font-size: 18px;
-    color: #8b8f97;
+    color: #000000;
     border-bottom: 1px solid #e6ebed;
+    font-size: 3rem;
+}
+
+.view {
+    background: url('../img/scrappy-campus.jpg');
+        background-repeat: no-repeat;
+}
+
+
+#navbar-image {
+    width: 120px;
+    padding-top: 10px;
+    padding-right: 10px;
+}
+
+.user-info-block {
+    padding-left: 10px;
+    padding-bottom: 14px;
+}
+
+.user-info-subtitle {
+    font-size: 16px;
+}
+
+#user-info-course-name {
+    font-style: italic;
+}
+
+.home-panel {
+    min-height: 300px;
+}
+
+.jumbotron {
+    padding-left: 70px;
+}
+
+body {
+    background-color: transparent!important;
+}
+
+
+html {
+  background: url("../img/scrappy-campus.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+th {
+
+    font-size: 3rem;
+}
+
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+
+
 }

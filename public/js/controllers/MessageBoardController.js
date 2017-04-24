@@ -33,7 +33,7 @@ function MessageBoardController($scope, Services) {
         if(this.services.isTeacher()) {
             userName = "Teacher: " + this.services.getUserInfo().firstName + " " + this.services.getUserInfo().lastName
         } else {
-            "Parent: " +this.services.getUserInfo().firstName + " " + this.services.getUserInfo().lastName
+            userName = "Parent: " +this.services.getUserInfo().firstName + " " + this.services.getUserInfo().lastName
         }
         var message = {
             id: this.classID,

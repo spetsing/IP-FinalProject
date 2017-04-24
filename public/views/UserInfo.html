@@ -1,17 +1,33 @@
-<h2>User Info</h2>
-
-<table  border="1">
-    <tr ng-repeat="x in test">
-        <td>{{x.name}}</td>
-        <td>{{x.age}}</td>
-    </tr>
-</table>
-
-
-<div ng-repeat="y in test">
-    <h1 id="{{y.id}}">{{y.name}}</h1>
-    <h2>{{y.age}}</h2>
-
-</div>
-
-<button ng-click="testing()">Add Data</button>
+   <div class="container">
+            <div class="panel panel-info">
+                <div class="panel-heading">User Info</div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="user-info-block">
+                            <p class="user-info-subtitle"><b>Full Name</b></p>
+                            <p class="user-info-full-name"> {{userInfo.firstName + " " + userInfo.lastName}}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="user-info-block">
+                            <p class="user-info-subtitle"><b>Username</b></p>
+                            <p class="user-info-username">{{userInfo.userName}}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="user-info-block">
+                            <p class="user-info-subtitle"><b>Role</b></p>
+                            <p id ="parent" ng-show="!isParent(userInfo)" class="user-info-role">Parent</p>
+                            <p id ="teacher" ng-show="isParent(userInfo)" class="user-info-role">Teacher</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="user-info-block">
+                            <p class="user-info-subtitle"><b>Course</b></p>
+                            <p class="user-info-course-name">{{userInfo.class.id}}</p>
+                            <p class="user-info-course-description">{{userInfo.class.name}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>

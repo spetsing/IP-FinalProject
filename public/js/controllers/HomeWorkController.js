@@ -9,11 +9,12 @@ function HomeWorkController($scope, Services) {
     $scope.classID = Services.getUserInfo().class.id;
     var isTeacher = Services.isTeacher();
 
+
+
     //Check if teacher. If Not, hide ability to add Homework
     $(document).ready(function () {
-
-        if (this.services.isTeacher()) {
-            debugger;
+        if (!this.services.isTeacher()) {
+            $("#input").hide();
         }
     }.bind($scope));
 

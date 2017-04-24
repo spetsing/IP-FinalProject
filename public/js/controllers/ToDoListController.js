@@ -7,9 +7,9 @@ function ToDoListController($scope, Services) {
 
     //Check if teacher. If Not, hide ability to add Homework
     $(document).ready(function () {
-        if(this.services.isTeacher()){
-            debugger;
-           }
+        if (!this.services.isTeacher()) {
+            $("#input").hide();
+        }
     }.bind($scope));
 
     $.ajax({
@@ -60,7 +60,7 @@ function ToDoListController($scope, Services) {
                 success: function (data) {
                     this.toDoList.push(toDo);
                     this.$digest();
-                    $("#messageInputDescription").val("");
+                    $("#ToDOInputDescription").val("");
                 }.bind(this),
                 error: function (err) {
                     alert(err.responseJSON);

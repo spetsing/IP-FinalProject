@@ -1,5 +1,5 @@
 <div class="container" id="ToDo-section">
-    <div class="panel panel-primary">
+    <div id="input" class="panel panel-primary">
         <div class="panel-heading">To Do List</div>
         <div class="panel-body">
             <form id="ToDo-form">
@@ -11,12 +11,15 @@
             </form>
         </div>
     </div>
-    <ul class="todo-list" ng-repeat="x in toDoList">
-			<li class="done">
-				<input id="{{x.id}}" type="checkbox" ng-click="checkItem($event)"/>
-				<label class="toggle" for="find"></label>
-				{{x.description}}
-			</li>
-    </ul>
-    <button>Mark Complete</button>
-</div>
+    <div class="panel panel-info">
+        <div class="panel-heading">To Do List</div>
+        <div class="panel-body">
+            <div class="panel-body">
+                <ul class="todo-list" ng-repeat="x in toDoList">
+                    <li class="done">
+                        <input id="{{x.id}}" type="checkbox" ng-click="checkItem($event)" />
+                        <label class="toggle" for="find"></label> {{x.description}}
+                    </li>
+                </ul>
+            </div>
+        </div>

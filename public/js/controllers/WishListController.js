@@ -12,8 +12,8 @@ function WishListController($scope, Services) {
 
     //Check if teacher. If Not, hide ability to add Homework
     $(document).ready(function () {
-        if (this.services.isTeacher()) {
-            debugger;
+        if (!this.services.isTeacher()) {
+            $("#input").hide();
         }
     }.bind($scope));
 
