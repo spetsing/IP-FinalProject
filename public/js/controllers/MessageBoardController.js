@@ -9,40 +9,44 @@ function MessageBoardController($scope, Services) {
 
     //Check if teacher. If Not, hide ability to add Homework
     $(document).ready(function () {
-        if(this.services.isTeacher()){
+        if (this.services.isTeacher()) {
             debugger;
-           }
+        }
     }.bind($scope));
 
     $.ajax({
-                type: 'GET',
-                url: 'http://34.195.93.38:3001/getMessageBoard?id='+$scope.classID,
-                success: function (data) {
-                    this.messageBoard = data;
-                    this.$digest();
-                }.bind($scope),
-                error: function (err) {
-                    alert(err.responseJSON);
-                }.bind(this)
-            });
+        type: 'GET',
+        url: 'http://34.195.93.38:3001/getMessageBoard?id=' + $scope.classID,
+        success: function (data) {
+            this.messageBoard = data;
+            this.$digest();
+        }.bind($scope),
+        error: function (err) {
+            alert(err.responseJSON);
+        }.bind(this)
+    });
 
-    $scope.addMessage = function() {
+    $scope.addMessage = function () {
 
         var description = $("#messageInputDescription").val();
-        var userName;
-        if(this.services.isTeacher()) {
-            userName = "Teacher: " + this.services.getUserInfo().firstName + " " + this.services.getUserInfo().lastName
+        if (description === "") {
+            alert("You must enter a Message");
         } else {
-            userName = "Parent: " +this.services.getUserInfo().firstName + " " + this.services.getUserInfo().lastName
-        }
-        var message = {
-            id: this.classID,
-            userName: userName,
-            date: new Date().toDateString(),
-            description: description
-        }
 
-        $.ajax({
+            var userName;
+            if (this.services.isTeacher()) {
+                userName = "Teacher: " + this.services.getUserInfo().firstName + " " + this.services.getUserInfo().lastName
+            } else {
+                userName = "Parent: " + this.services.getUserInfo().firstName + " " + this.services.getUserInfo().lastName
+            }
+            var message = {
+                id: this.classID,
+                userName: userName,
+                date: new Date().toDateString(),
+                description: description
+            }
+
+            $.ajax({
                 type: 'POST',
                 url: 'http://34.195.93.38:3001/addMessage',
                 data: message,
@@ -55,6 +59,7 @@ function MessageBoardController($scope, Services) {
                     alert(err.responseJSON);
                 }.bind(this)
             });
+        }
     }
 
 

@@ -35,26 +35,32 @@ function HomeWorkController($scope, Services) {
         var date = $("#hwInputDate").val();
         var description = $("#hwInputDescription").val();
 
-        var homework = {
-            id: this.classID,
-            date: date,
-            description: description
-        }
+        if (date === "") {
+            alert("You must Enter a Due Date");
+        } else if (description === "") {
+            alert("You must enter a description");
+        } else {
+            var homework = {
+                id: this.classID,
+                date: date,
+                description: description
+            }
 
-        $.ajax({
-            type: 'POST',
-            url: 'http://34.195.93.38:3001/addHomework',
-            data: homework,
-            success: function (data) {
-                this.homework.push(homework);
-                this.$digest();
-                $("#hwInputDate").val("");
-                $("#hwInputDescription").val("");
-            }.bind(this),
-            error: function (err) {
-                alert(err.responseJSON);
-            }.bind(this)
-        });
+            $.ajax({
+                type: 'POST',
+                url: 'http://34.195.93.38:3001/addHomework',
+                data: homework,
+                success: function (data) {
+                    this.homework.push(homework);
+                    this.$digest();
+                    $("#hwInputDate").val("");
+                    $("#hwInputDescription").val("");
+                }.bind(this),
+                error: function (err) {
+                    alert(err.responseJSON);
+                }.bind(this)
+            });
+        }
     }
 }
 

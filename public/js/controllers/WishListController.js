@@ -5,8 +5,12 @@ function WishListController($scope, Services) {
     $scope.wishList = [{
         id: "test",
         description: "Pencils",
-        parentAssigned:"none"
-    },{id:"test1",description:"Paper Towels",parentAssigned:"Dorthy"}];
+        parentAssigned: "none"
+    }, {
+        id: "test1",
+        description: "Paper Towels",
+        parentAssigned: "Dorthy"
+    }];
     $scope.services = Services;
     $scope.classID = Services.getUserInfo().class.id;
 
@@ -33,38 +37,42 @@ function WishListController($scope, Services) {
     $scope.addToWishList = function () {
 
         var description = $("#WishListInputDescription").val();
+        if (description === "") {
+            alert("You must enter a Wish List Item");
+        } else {
 
-        var wishListItem = {
-            classID: this.classID,
-            id: new Date().toISOString(),
-            description: description,
-            parentAssigned: "none"
+            var wishListItem = {
+                classID: this.classID,
+                id: new Date().toISOString(),
+                description: description,
+                parentAssigned: "none"
+            }
+
+            $.ajax({
+                type: 'POST',
+                url: 'http://34.195.93.38:3001/addWishList',
+                data: wishListItem,
+                success: function (data) {
+                    this.wishList.push(wishListItem);
+                    this.$digest();
+                    $("#WishListInputDescription").val("");
+                }.bind(this),
+                error: function (err) {
+                    alert(err.responseJSON);
+                }.bind(this)
+            });
         }
-
-        $.ajax({
-            type: 'POST',
-            url: 'http://34.195.93.38:3001/addWishList',
-            data: wishListItem,
-            success: function (data) {
-                this.wishList.push(wishListItem);
-                this.$digest();
-                $("#WishListInputDescription").val("");
-            }.bind(this),
-            error: function (err) {
-                alert(err.responseJSON);
-            }.bind(this)
-        });
     }
 
-    $scope.test = function(x) {
-        if(x.parentAssigned === "none"){
+    $scope.test = function (x) {
+        if (x.parentAssigned === "none") {
             return true;
         } else {
             return false;
         }
     }
 
-    $scope.signUp = function($event) {
+    $scope.signUp = function ($event) {
 
         var signUp = {
             id: event.target.id,
@@ -72,12 +80,12 @@ function WishListController($scope, Services) {
             userName: this.services.getUserInfo().firstName + " " + this.services.getUserInfo().lastName
         }
 
-         $.ajax({
+        $.ajax({
             type: 'POST',
             url: 'http://34.195.93.38:3001/singUpWishList',
             data: signUp,
             success: function (data) {
-               for(var x = 0; x < this.wishList.length; x++) {
+                for (var x = 0; x < this.wishList.length; x++) {
                     this.wishList[x].parentAssigned = data[x].parentAssigned;
                 }
                 this.$digest();
