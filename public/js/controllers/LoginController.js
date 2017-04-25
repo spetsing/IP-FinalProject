@@ -62,11 +62,11 @@ function LoginController($scope, Services, $location) {
 
         if (user.firstName === "") {
             alert("You must enter your First Name");
-        } else if (user.lastName) {
+        } else if (user.lastName === "") {
             alert("You must enter your Last Name")
-        } else if (user.userName) {
+        } else if (user.userName === "") {
             alert("You must enter a User Name");
-        } else if (user.password) {
+        } else if (user.password === "") {
             alert("You must enter a Password");
         } else if (user.teacher && user.class.name === "") {
             alert("You must enter a Class name");
