@@ -123,6 +123,7 @@ function LoginController($scope, Services, $location) {
     $(document).ready(function () {
         $("#navBar").hide();
         $("#signUpDiv").hide();
+        $("#classDescriptionDiv").hide();
     });
 }
 

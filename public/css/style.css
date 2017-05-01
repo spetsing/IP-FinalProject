@@ -19,8 +19,18 @@
   color: #ffffff!important;
   font-family: 'Ubuntu', Arial, sans-serif ! important;
   transition: all .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  font-size: 2rem!important;
+  font-size: 2.2rem!important;
+    -webkit-text-stroke-color: black;
+    -webkit-text-stroke-width: 1px;
 }
+
+.teacherText{
+    -webkit-text-stroke-color: black;
+    -webkit-text-stroke-width: 1px;
+    color: white;
+    font-size: 2.2rem;
+}
+
 .input {
   width: 20rem;
   font-size: 100%;
