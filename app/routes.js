@@ -301,7 +301,6 @@ module.exports = function (app) {
                     console.log(documents[0].wishList[x].id + "     " + req.body.id);
                     if(documents[0].wishList[x].id === req.body.id) {
                         documents[0].wishList[x].parentAssigned = req.body.userName;
-                        console.log(documents[0].toDo[x].markedCompleted);
                     }
                 }
                 documents[0].markModified('wishList');
